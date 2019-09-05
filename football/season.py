@@ -14,22 +14,25 @@ def generate_rand_games(n=15):
     # For the specified number of games, create an instance of the Game
     # class...
     # TODO - You can also include the location and week number if desired
+
     for _ in list(range(n)):
         # Get team names by sampling team_names from possible_values
-        game = Game(teams=sample(team_names, k=2))
+        game = Game(teams=sample(team_names, k=2), 
+                    location=sample(location_names, k=1),
+                    week=sample(week_num, k=1))
 
         # Give each team a random number (from 0 to 3) of each:
         # touchdowns and field goals
-        for i in list(range(randint(0, 4))):
+        for _ in list(range(randint(0, 4))):
             game.field_goal(game.teams[0])
 
-        for j in list(range(randint(0, 4))):
+        for _ in list(range(randint(0, 4))):
             game.field_goal(game.teams[1])
 
-        for k in list(range(randint(0, 4))):
+        for _ in list(range(randint(0, 4))):
             game.touchdown(game.teams[0])
 
-        for l in list(range(randint(0, 4))):
+        for _ in list(range(randint(0, 4))):
             game.touchdown(game.teams[1])
 
         games.append(game)
@@ -103,3 +106,5 @@ def season_report(games):
 
 if __name__ == '__main__':
     season_report(generate_rand_games())
+
+
